@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/sys
+END
+stat.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/sys/stat.h
+END
+unistd.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/sys/unistd.h
+END

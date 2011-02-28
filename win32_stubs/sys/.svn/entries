@@ -1,0 +1,52 @@
+8
+
+dir
+34
+https://psp-quake.svn.sourceforge.net/svnroot/psp-quake/Quake/win32_stubs/sys
+https://psp-quake.svn.sourceforge.net/svnroot/psp-quake
+
+
+
+2007-04-10T20:41:35.027037Z
+1
+petermackay
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+4133fa62-c72d-0410-800a-86a966c8fc37
+
+stat.h
+file
+
+
+
+
+2007-08-30T00:19:36.000000Z
+da6ea18f1bc48e712d108e5264050aee
+2007-04-10T20:41:35.027037Z
+1
+petermackay
+
+unistd.h
+file
+
+
+
+
+2007-08-30T00:19:36.000000Z
+549ff2a7d03bf709dec3e4a8307a8f00
+2007-04-10T20:41:35.027037Z
+1
+petermackay
+

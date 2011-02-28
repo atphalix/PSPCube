@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs
+END
+pspdebug.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspdebug.h
+END
+pspaudiolib.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspaudiolib.h
+END
+psprtc.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/psprtc.h
+END
+pspgu.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspgu.h
+END
+psppower.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/psppower.h
+END
+pspkernel.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspkernel.h
+END
+pspmoduleinfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspmoduleinfo.h
+END
+Quake_Win32Stubs.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/Quake_Win32Stubs.vcproj
+END
+pspctrl.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspctrl.h
+END
+pspdisplay.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/psp-quake/!svn/ver/1/Quake/win32_stubs/pspdisplay.h
+END

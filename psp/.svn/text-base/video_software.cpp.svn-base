@@ -1,0 +1,232 @@
+/*
+Quake PSP port.
+Copyright (C) 2005-2006 Peter Mackay
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+#include <cstddef>
+
+#include <pspdisplay.h>
+#include <pspgu.h>
+#include <pspkernel.h>
+
+extern "C"
+{
+#include "../quakedef.h"
+#include "../d_local.h"
+}
+
+namespace quake
+{
+	namespace video
+	{
+		// Types.
+		typedef ScePspRGBA8888	Pixel;
+		typedef u8				Texel;
+
+		// Constants.
+		static const std::size_t	screenWidth			= 480;
+		static const std::size_t	screenHeight		= 272;
+		static const std::size_t	renderWidth			= 320;
+		static const std::size_t	renderHeight		= 200;
+		static const std::size_t	textureWidth		= 512;
+		static const std::size_t	textureHeight		= 256;
+		static const std::size_t	paletteSize			= 256;
+		static const int			surfaceCacheSize	= SURFCACHE_SIZE_AT_320X200 + ((renderWidth * renderHeight) - (320 * 200)) * 3;
+		static void* const			vramBase			= sceGeEdramGetAddr();
+		static Pixel* const			displayBuffer		= static_cast<Pixel*>(vramBase);
+		static Pixel* const			backBuffer			= static_cast<Pixel*>(displayBuffer + (512 * screenHeight));
+		static Texel* const			texture0			= reinterpret_cast<Texel*>(displayBuffer + 2 * (512 * screenHeight));
+		static Texel* const			texture1			= texture0 + (textureWidth * textureHeight);
+
+		// Regular globals.
+		static Pixel __attribute__((aligned(16)))	texturePalette[paletteSize];
+		static short								zBuffer[renderHeight][renderWidth];
+		static unsigned char						surfaceCache[surfaceCacheSize];
+
+		//! The GU display list.
+		//! @note	Aligned to 64 bytes so it doesn't share a cache line with anything.
+		unsigned int __attribute__((aligned(64)))	displayList[262144];
+	}
+}
+
+using namespace quake;
+using namespace quake::video;
+
+// Globals required by Quake.
+unsigned short	d_8to16table[paletteSize];
+
+void VID_SetPalette(unsigned char* palette)
+{
+	// Convert the palette to PSP format.
+	for(Pixel* color = &texturePalette[0]; color < &texturePalette[paletteSize]; ++color)
+	{
+		const unsigned int r = *palette++;
+		const unsigned int g = *palette++;
+		const unsigned int b = *palette++;
+		*color = r | (g << 8) | (b << 16);
+	}
+
+	// Upload the palette.
+	sceGuClutMode(GU_PSM_8888, 0, paletteSize - 1, 0);
+	sceKernelDcacheWritebackRange(texturePalette, sizeof(texturePalette));
+	sceGuClutLoad(paletteSize / 8, texturePalette);
+}
+
+void VID_ShiftPalette(unsigned char* palette)
+{
+	VID_SetPalette(palette);
+}
+
+void VID_Init(unsigned char* palette)
+{
+	// Initialise the GU.
+	sceGuInit();
+
+	// Set up the GU.
+	sceGuStart(GU_DIRECT, displayList);
+	{
+		// Set the draw and display buffers.
+		void* const displayBufferInVRAM	= reinterpret_cast<char*>(displayBuffer) - reinterpret_cast<std::size_t>(vramBase);
+		void* const backBufferInVRAM	= reinterpret_cast<char*>(backBuffer) - reinterpret_cast<std::size_t>(vramBase);
+		sceGuDrawBuffer(GU_PSM_8888, backBufferInVRAM, 512);
+		sceGuDispBuffer(screenWidth, screenHeight, displayBufferInVRAM, 512);
+
+		// Set the rendering offset and viewport.
+		sceGuOffset(2048 - (screenWidth / 2), 2048 - (screenHeight / 2));
+		sceGuViewport(2048, 2048, screenWidth, screenHeight);
+
+		// Set up scissoring.
+		sceGuEnable(GU_SCISSOR_TEST);
+		sceGuScissor(0, 0, screenWidth, screenHeight);
+
+		// Set up texturing.
+		sceGuEnable(GU_TEXTURE_2D);
+		sceGuTexMode(GU_PSM_T8, 0, 0, GU_FALSE);
+		sceGuTexFunc(GU_TFX_REPLACE, GU_TCC_RGB);
+		sceGuTexFilter(GU_LINEAR, GU_LINEAR);
+	}
+	sceGuFinish();
+	sceGuSync(0,0);
+
+	// Turn on the display.
+	sceDisplayWaitVblankStart();
+	sceGuDisplay(GU_TRUE);
+
+	// What is the aspect ratio?
+	const float	screenAspectRatio	= static_cast<float>(screenWidth) / screenHeight;
+	const float	renderAspectRatio	= static_cast<float>(renderWidth) / renderHeight;
+
+	// Set up Quake's video parameters.
+	vid.aspect			= screenAspectRatio / renderAspectRatio;
+	vid.buffer			= texture0;
+	vid.colormap		= host_colormap;
+	vid.colormap16		= 0;
+	vid.conbuffer		= texture0;
+	vid.conheight		= renderHeight;
+	vid.conrowbytes		= textureWidth;
+	vid.conwidth		= renderWidth;
+	vid.direct			= 0;
+	vid.fullbright		= paletteSize - LittleLong(*((int *) vid.colormap + 2048));
+	vid.height			= renderHeight;
+	vid.maxwarpheight	= WARP_HEIGHT;
+	vid.maxwarpwidth	= WARP_WIDTH;
+	vid.numpages		= 2;
+	vid.recalc_refdef	= 0;
+	vid.rowbytes		= textureWidth;
+	vid.width			= renderWidth;
+	
+	// Set the z buffer address.
+	d_pzbuffer			= &zBuffer[0][0];
+
+	// Initialise the surface cache.
+	D_InitCaches(surfaceCache, surfaceCacheSize);
+
+	// Start a render.
+	sceGuStart(GU_DIRECT, displayList);
+
+	// Set the palette.
+	VID_SetPalette(palette);
+}
+
+void VID_Shutdown(void)
+{
+	// Finish rendering.
+	sceGuFinish();
+	sceGuSync(0,0);
+
+	// Shut down the display.
+	sceGuTerm();
+}
+
+void VID_Update(vrect_t* rects)
+{
+	// Finish rendering.
+	sceGuFinish();
+	sceGuSync(0, 0);
+
+	// Switch the buffers.
+	sceGuSwapBuffers();
+
+	// Start a new render.
+	sceGuStart(GU_DIRECT, displayList);
+
+	// Allocate memory in the display list for some vertices.
+	struct Vertex
+	{
+		SceUShort16	u, v;
+		SceShort16	x, y, z;
+	} * const vertices = static_cast<Vertex*>(sceGuGetMemory(sizeof(Vertex) * 2));
+
+	// Set up the vertices.
+	vertices[0].u	= 0;
+	vertices[0].v	= 0;
+	vertices[0].x	= 0;
+	vertices[0].y	= 0;
+	vertices[0].z	= 0;
+	vertices[1].u	= renderWidth;
+	vertices[1].v	= renderHeight;
+	vertices[1].x	= screenWidth;
+	vertices[1].y	= screenHeight;
+	vertices[1].z	= 0;
+
+	// Flush the data cache.
+	sceKernelDcacheWritebackRange(vid.buffer, textureWidth * renderHeight);
+
+	// Set the texture.
+	sceGuTexImage(0, textureWidth, textureHeight, textureWidth, vid.buffer);
+
+	// Draw the sprite.
+	sceGuDrawArray(
+		GU_SPRITES,
+		GU_VERTEX_16BIT | GU_TEXTURE_16BIT | GU_TRANSFORM_2D,
+		2,
+		0,
+		vertices);
+
+	// Swap Quake's buffers.
+	Texel* const newTexture = (vid.buffer == texture0) ? texture1 : texture0;
+	vid.buffer		= newTexture;
+	vid.conbuffer	= newTexture;
+}
+
+void D_BeginDirectRect(int x, int y, byte* pbitmap, int width, int height)
+{
+}
+
+void D_EndDirectRect(int x, int y, int width, int height)
+{
+}

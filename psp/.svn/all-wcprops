@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svnroot/psp-quake/!svn/ver/34/Quake/psp
+END
+network_infrastructure.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/psp-quake/!svn/ver/21/Quake/psp/network_infrastructure.hpp
+END
+math.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/25/Quake/psp/math.hpp
+END
+video_hardware_misc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/video_hardware_misc.cpp
+END
+input.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/input.cpp
+END
+video_hardware_mesh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/psp-quake/!svn/ver/22/Quake/psp/video_hardware_mesh.cpp
+END
+video_hardware_entity_fragment.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/video_hardware_entity_fragment.cpp
+END
+video_hardware_model.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/video_hardware_model.cpp
+END
+clipping.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/psp-quake/!svn/ver/34/Quake/psp/clipping.cpp
+END
+vram.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/vram.cpp
+END
+Quake_PSP.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/Quake_PSP.vcproj
+END
+battery.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/battery.cpp
+END
+clipping.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/psp-quake/!svn/ver/24/Quake/psp/clipping.hpp
+END
+vram.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/vram.hpp
+END
+battery.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/battery.hpp
+END
+video_hardware_screen.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/psp-quake/!svn/ver/11/Quake/psp/video_hardware_screen.cpp
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/26/Quake/psp/main.cpp
+END
+mcount.S
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/27/Quake/psp/mcount.S
+END
+module.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/17/Quake/psp/module.cpp
+END
+cd.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/cd.cpp
+END
+video_hardware.h
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/psp-quake/!svn/ver/19/Quake/psp/video_hardware.h
+END
+video_hardware_surface.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/video_hardware_surface.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/33/Quake/psp/Makefile
+END
+sed_make.sh
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/psp-quake/!svn/ver/22/Quake/psp/sed_make.sh
+END
+video_hardware_draw.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/psp-quake/!svn/ver/19/Quake/psp/video_hardware_draw.cpp
+END
+prof.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/psp-quake/!svn/ver/27/Quake/psp/prof.c
+END
+video_hardware_model.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/video_hardware_model.h
+END
+video_hardware_light.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/psp-quake/!svn/ver/11/Quake/psp/video_hardware_light.cpp
+END
+video_hardware_warp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/video_hardware_warp.cpp
+END
+gethost.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/psp-quake/!svn/ver/21/Quake/psp/gethost.cpp
+END
+video_software.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/psp-quake/!svn/ver/1/Quake/psp/video_software.cpp
+END
+gethost.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/psp-quake/!svn/ver/21/Quake/psp/gethost.hpp
+END
+video_hardware.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/video_hardware.cpp
+END
+build.bat
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svnroot/psp-quake/!svn/ver/22/Quake/psp/build.bat
+END
+system.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/16/Quake/psp/system.cpp
+END
+psp_gprof_report.txt
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/psp-quake/!svn/ver/26/Quake/psp/psp_gprof_report.txt
+END
+video_hardware_main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/psp-quake/!svn/ver/29/Quake/psp/video_hardware_main.cpp
+END
+sound.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svnroot/psp-quake/!svn/ver/16/Quake/psp/sound.cpp
+END
+system.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/system.hpp
+END
+network_infrastructure.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/psp-quake/!svn/ver/28/Quake/psp/network_infrastructure.cpp
+END
+network.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/psp-quake/!svn/ver/6/Quake/psp/network.cpp
+END
+math.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/psp-quake/!svn/ver/25/Quake/psp/math.cpp
+END

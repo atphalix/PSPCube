@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svnroot/psp-quake/!svn/ver/32/Quake/psp/dist
+END
+gpl.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/psp-quake/!svn/ver/20/Quake/psp/dist/gpl.txt
+END
+readme.html
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/psp-quake/!svn/ver/32/Quake/psp/dist/readme.html
+END
+old_readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/psp-quake/!svn/ver/20/Quake/psp/dist/old_readme.txt
+END
