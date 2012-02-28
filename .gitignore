@@ -1,0 +1,9 @@
+openquartz/utils/bin
+*.o
+*.a
+*.log
+*#
+*~
+*.tar.gz
+*.bak
+psp/dist/EBOOT.PBP
