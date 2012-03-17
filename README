@@ -1,4 +1,14 @@
---------------------------
+To install on your PSP copy the directory psp/dist in to your PSP's memory stick directory PSP/GAME/ like any other homebrew, and you should see the game on your PSP menu, Enjoy!
+
+NOTE: you need to have a PSP with custome firmware to play, it won't work on sony official firmware as it does not support unofficial games.
+
+For Developers:
+--------------
+if you want to compile the game from source you need to use PSPSDK (basically a MIPS crosscompiler toolchain to generate code for PSP, just google it), I made some fix, as the original code was giving compile error, other than that I removed the drawing of weapon model and disabed "fire" button, but you can easily get them back by looking at the commit history in git.
+as the original Quake1 game assets are copyrighted and can't be included, I replaced them with my own game with is undr GPL licence for demostration purpose.
+Other than thatI didn't change the code too much, and I don't claim to have ported quake into PSP!
+The following is the original project README file:
+-------------------------------------------------------------------
 Quake 1 for PSP v 1.0
 
 Juraj Styk 		
