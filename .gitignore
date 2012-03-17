@@ -6,4 +6,5 @@ openquartz/utils/bin
 *~
 *.tar.gz
 *.bak
-psp/dist/EBOOT.PBP
+psp/EBOOT.PBP
+psp/dist/
